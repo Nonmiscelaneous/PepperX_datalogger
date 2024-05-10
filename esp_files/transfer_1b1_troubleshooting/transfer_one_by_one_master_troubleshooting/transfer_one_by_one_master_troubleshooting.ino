@@ -8,9 +8,9 @@ static constexpr uint8_t PIN_SS = 15;
 static constexpr uint8_t PIN_SS = SS;
 #endif
 
-static constexpr size_t BUFFER_SIZE = 1;
-uint8_t tx_buf[BUFFER_SIZE] {0xAA};
-uint8_t rx_buf[BUFFER_SIZE] {0};
+static constexpr size_t BUFFER_SIZE = 4;
+uint8_t tx_buf[BUFFER_SIZE] {0xAA, 0xAA, 0xAA, 0xAA};
+uint8_t rx_buf[BUFFER_SIZE] {0, 0, 0, 0};
 
 void setup()
 {
@@ -33,7 +33,7 @@ void loop()
     //initializeBuffers(tx_buf, rx_buf, BUFFER_SIZE);
         dumpBuffers("tx 1", tx_buf, 0, BUFFER_SIZE);
         dumpBuffers("rx 1", rx_buf, 0, BUFFER_SIZE);
-    master.beginTransaction(SPISettings(10000, MSBFIRST, SPI_MODE0));
+    master.beginTransaction(SPISettings(100000, MSBFIRST, SPI_MODE0));
     digitalWrite(PIN_SS, LOW);
     master.transferBytes(tx_buf, rx_buf, BUFFER_SIZE);
         dumpBuffers("tx 2", tx_buf, 0, BUFFER_SIZE);
