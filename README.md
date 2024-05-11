@@ -15,3 +15,5 @@ To install in Arduino IDE, in the bar at the top select: Tools -> Manage Librari
 - https://github.com/hideakitai/ESP32SPISlave/tree/main
 - https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf
 - https://www.espressif.com/sites/default/files/documentation/esp32_technical_reference_manual_en.pdf#sdioslave
+
+Feather was previous microcontroller, no longer used due to being to slow.
