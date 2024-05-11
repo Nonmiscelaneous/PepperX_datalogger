@@ -15,7 +15,7 @@ uint8_t rx_buf[BUFFER_SIZE] {0, 0, 0 ,0};
 
 void setup()
 {
-    Serial.begin(115200);
+    Serial.begin(921600);
 
     delay(2000);
 
