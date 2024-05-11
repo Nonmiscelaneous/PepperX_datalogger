@@ -1,13 +1,11 @@
-# PepperX_FeatherM0_datalogger
+# PepperX_datalogger
 
-Tutorial to setup the Feather to work with Arduino IDE:
-https://learn.adafruit.com/adafruit-feather-m0-adalogger/setup
+## ESP32 is contending microcontroller for this purpose
+Based on the https://github.com/hideakitai/ESP32SPISlave/tree/main repository. 
 
-The objective: Operate the Feather as an SPI slave to recieve data (in HEX) and write that data to SD card as it is recieved.
+To install in Arduino IDE, in the bar at the top select: Tools -> Manage Libraries, in the search bar type "esp32 spi slave" and the library will come up, click install.
 
-The Feather is to slow for the intended purpose, so swithching to ESP32
-
-ESP 32 references:
+## ESP 32 references:
 ![esp32_pinout](https://m.media-amazon.com/images/I/81qFXiQh-ZL._AC_SL1500_.jpg)
 - https://randomnerdtutorials.com/esp32-spi-communication-arduino/#spi-multiple-bus-hspi-vspi
 - https://randomnerdtutorials.com/esp32-microsd-card-arduino/#writeFile
