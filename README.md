@@ -8,7 +8,7 @@ The objective: Operate the Feather as an SPI slave to recieve data (in HEX) and 
 The Feather is to slow for the intended purpose, so swithching to ESP32
 
 ESP 32 references:
-![esp32_pinout](https://esp32io.com/images/tutorial/ESP-WROOM-32-Dev-Module-pinout.jpg)
+![esp32_pinout](https://m.media-amazon.com/images/I/81qFXiQh-ZL._AC_SL1500_.jpg)
 - https://randomnerdtutorials.com/esp32-spi-communication-arduino/#spi-multiple-bus-hspi-vspi
 - https://randomnerdtutorials.com/esp32-microsd-card-arduino/#writeFile
 - https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/peripherals/spi_slave.html
