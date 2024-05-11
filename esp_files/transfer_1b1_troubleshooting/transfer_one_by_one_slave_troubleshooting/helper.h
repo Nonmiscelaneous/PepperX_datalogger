@@ -23,8 +23,8 @@ bool verifyAndDumpDifference(const char *a_title, const uint8_t *a_buf, size_t a
 {
     bool verified = true;
 
-    printf("a_size: %d \n", a_size);
-    printf("b_size: %d \n", b_size);
+    //printf("a_size: %d \n", a_size);
+    //printf("b_size: %d \n", b_size);
 
     if (a_size != b_size) {
         printf("received data size does not match: expected = %d / actual = %d\n", a_size, b_size);
@@ -41,12 +41,12 @@ bool verifyAndDumpDifference(const char *a_title, const uint8_t *a_buf, size_t a
 
         // if a_buf[i] and b_buf[i] is not same, check the range that has difference
         size_t j = 1;
-        printf("j: %d \n", j);
+        //printf("j: %d \n", j);
         while (a_buf[i + j] != b_buf[i + j]) {
             j++;
             
         }
-        printf("j: %d \n", j);
+        //printf("j: %d \n", j);
 
         // dump different data range
         dumpBuffers(a_title, a_buf, i, j);
