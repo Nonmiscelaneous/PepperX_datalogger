@@ -34,8 +34,13 @@ void loop()
 {
     // initialize tx/rx buffers
     //initializeBuffers(tx_buf, rx_buf, BUFFER_SIZE);
-    tx_buf[0] = i;
+    // There is an offset set to 0 int initialize buffers, when testing try:
+    initializeBuffers(tx_buf, rx_buf, BUFFER_SIZE, i);
+    // This should result in tx containing 0,1,2,3 (for a size of 4, goes up with larger buffer)
+    // and with each loop the starting digit will increase by 1.
+    //tx_buf[0] = i;
     i++;
+    
         //dumpBuffers("tx 1", tx_buf, 0, BUFFER_SIZE);
         //dumpBuffers("rx 1", rx_buf, 0, BUFFER_SIZE);
     master.beginTransaction(SPISettings(ck_speed, MSBFIRST, SPI_MODE0));
