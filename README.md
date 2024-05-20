@@ -1,7 +1,10 @@
 # PepperX_datalogger
 
 ## ESP32 is contending microcontroller for this purpose
-Based on the https://github.com/hideakitai/ESP32SPISlave/tree/main repository. 
+The Arduino framework code is modified from examples in the https://github.com/hideakitai/ESP32SPISlave/tree/main repository. 
+The IDF framework code is modified from examples in the https://github.com/espressif/esp-idf repository.
+
+Currently used is Master_transmitter_ArduinoFramework as test sender and Slave_Reciever_ESP-IDFframework or Slave_Reciever_ArduinoFramework as the recievers. (Note: folder structure is from PlatfromIO, main is in 'src' and headerfiles are in 'include'
 
 To install in Arduino IDE, in the bar at the top select: Tools -> Manage Libraries, in the search bar type "esp32 spi slave" and the library will come up, click install.
 
