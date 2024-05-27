@@ -1,5 +1,9 @@
 # PepperX_datalogger
 
+## Structure
+main.c and config.h are the most recent implementation of the software. Uses ESP32-IDF framework.
+
+
 ## ESP32 is contending microcontroller for this purpose
 Based on the https://github.com/hideakitai/ESP32SPISlave/tree/main repository. 
 
