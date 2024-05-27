@@ -3,6 +3,8 @@
 ## Structure
 main.c and config.h are the most recent implementation of the software. Uses ESP32-IDF framework.
 
+Slave_Reciever_ESP-IDFframework_PlatformIO is the most recent implementation of only SPI slave reciever functionality. The folder follows the default platformio structure, use main.c from 'src' and any .h files in 'include'
+
 
 ## ESP32 is contending microcontroller for this purpose
 Based on the https://github.com/hideakitai/ESP32SPISlave/tree/main repository. 
