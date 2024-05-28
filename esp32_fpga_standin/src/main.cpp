@@ -14,7 +14,7 @@ static constexpr uint8_t PIN_SS = 15; // sets SS pin to gpio 15 (p15 label)
 static constexpr uint8_t PIN_SS = SS; // sets SS pin to default, gpio 5 (p5 label)
 #endif
 
-static constexpr size_t BUFFER_SIZE = 4; // number of bytes in buffer
+static constexpr size_t BUFFER_SIZE = 3; // number of bytes in buffer. FPGA will send 24 bits every 8 microseconds
 uint8_t tx_buf[BUFFER_SIZE] {0}; // initialize send buffer contents
 uint8_t rx_buf[BUFFER_SIZE] {0}; // initialize recieve buffer contents
 uint32_t ck_speed = 10000000; // SPI clock speed in Hz
@@ -47,7 +47,7 @@ void loop()
     //tx_buf[0] = i;
     for (size_t j = 0; j < BUFFER_SIZE; j++) 
     {
-	  tx_buf[j] = i & 0xFF;
+	  tx_buf[j] = 'A' + (i % 26); // fill buffer with 4 of a single ascii capital letter that cycles each overwrite
 	  // overwrites contents of tx buffer with the offset + index within buffer
     }
     
@@ -83,10 +83,13 @@ void loop()
         //dumpBuffers("rx", rx_buf, 0, BUFFER_SIZE); // dumps contents of rx_buf
     }
     */
-   /*
+   /**/
     dumpBuffers("tx", tx_buf, 0, BUFFER_SIZE); // dumps contents of tx_buf
+    //dumpBuffers("rx", rx_buf, 0, BUFFER_SIZE); // dumps contents of rx_buf
     /**/
-    //delay(0.025); // delay between transactions
+    delay(1); // delay between transactions
     // removing delay showed ~260 microseconds (0.26 ms) between transactions on a digital analyzer
+    // while not checked with the digital analyzer, removing the dumpBuffers resulted in shorter delay
+    // between packets, deduced from many packets getting skipped when looking at the slave recieve serial line
 }
 

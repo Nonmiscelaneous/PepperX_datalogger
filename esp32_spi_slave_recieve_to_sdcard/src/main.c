@@ -61,6 +61,9 @@ typedef struct ring_buffer{
     char contents[WRITE_CHUNK];
 } ring_buffer;
 
+static char header_byte = 'a';
+static char tail_byte = 'z';
+
 // function to initialize buffer
 /*
 void ring_init(ring_buffer *ringbuf, size_t capacity, size_t sz){
@@ -105,6 +108,11 @@ spi_slave_task()
     recieved_buffer->buff_size = WRITE_CHUNK;
     recieved_buffer->head = 0;
 
+
+
+    // Add initial header flag to data
+    ringbuf_write(recieved_buffer, &header_byte, 1);
+
     while(1) {
         //ESP_LOGI(TAG, "Start of while loop...\n");
         //Clear receive buffer, set send buffer to something sane
@@ -130,6 +138,8 @@ spi_slave_task()
             // 10922 transactions will fill buffer 32766, add 2 zeros at the end? or leave a "doubled up" set of data points?
         // 2:
         if (i == 10922) { 
+            // Add tail flag
+            ringbuf_write(recieved_buffer, &tail_byte, 1);
             // Place data chunk onto the queue
             if (xQueueSend(data_queue, &recieved_buffer, portMAX_DELAY) != pdPASS){
                 ESP_LOGE(TAG, "Failed to send data to queue");
@@ -137,6 +147,8 @@ spi_slave_task()
             else{
                 ESP_LOGI(TAG, "Data recieved: %d", sizeof(recieved_buffer));
             }
+            // Add header flag
+            ringbuf_write(recieved_buffer, &header_byte, 1);
 
             i = 0;
         }
